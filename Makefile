@@ -12,7 +12,7 @@ clean:
 	rm -f $(PROGRAM)
 
 install: $(PROGRAM)
-	install -s $(PROGRAM) $(DEST)
+	install -m 755 -s $(PROGRAM) $(DEST)
 
 uninstall:
 	rm -f $(DEST)/$(PROGRAM)
