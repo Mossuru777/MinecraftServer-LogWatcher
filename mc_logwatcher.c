@@ -38,15 +38,25 @@ int main(int argc, char *argv[]) {
 	}
 
 	/* im.kayac.com 設定 */
-		if(argc >= 5)
+		if(argc >= 5) {
 			//im.kayac.comは宛先ユーザーをURLで指定するため、ユーザー名をPOST URLにセット
 			kayac_post_url = (char *)malloc(29 + strlen(argv[4]) + 1);
+			if(kayac_post_url == NULL) {
+				printf("メモリを確保できません");
+				exit(EXIT_FAILURE);
+			}
 			sprintf(kayac_post_url, "http://im.kayac.com/api/post/%s", argv[4]);
+		}
 
-		if(argc == 6)
+		if(argc == 6) {
 			//iPhoneで通知を開く際のURLSchemeを引数から受け取りURLエンコード
 			kayac_urlscheme = (char *)malloc( (strlen(argv[5]) * 4) + 1); //UTF-8で1文字あたり最大4バイトなので
+			if(kayac_urlscheme == NULL) {
+				printf("メモリを確保できません");
+				exit(EXIT_FAILURE);
+			}
 			urlEncode(kayac_urlscheme, (const char *)argv[5]);
+		}
 
 	//シグナル受け取り時の処理を設定
 	signal(SIGHUP, sigproc);
