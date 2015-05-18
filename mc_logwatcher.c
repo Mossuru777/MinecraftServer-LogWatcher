@@ -19,7 +19,7 @@
 #define EVENT_BUF_LEN     ( 1024 * ( EVENT_SIZE + 16 ) )
 
 //プロトタイプ
-void sigproc();
+void sigproc(int);
 void sendMessage(int *, struct sockaddr_in *,char *, const unsigned char);
 void sendtoKayac(char *);
 void urlEncode(char *, const char *);
